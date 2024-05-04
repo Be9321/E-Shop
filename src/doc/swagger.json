@@ -1,0 +1,361 @@
+{
+    "openapi":"3.0.0",
+  "info":
+  {
+      "title":"Online Shop API",
+      "description":"This is the API Specification for the Online Shop Business backend.",
+      "contact":{"email":"belyseurwidukunda@gmail.com"},
+      "license":{
+          "name":"MIT",
+          "url":"https://opensource.org/licenses/mit"
+      },
+      "version": "1.0.0"
+  },
+  "extrenalDocs":{
+      "description":"Get source code",
+      "url":"https://github.com/Be9321/E-Shop"
+  },
+  "basePath":"/api/products",
+  "servers":
+  [
+      {
+          "url":"http://localhost:3000",
+          "description":"Local server"
+      },
+      {
+          "url":"https://E-shop.onrender.com",
+          "description":"production server"
+      }
+  ],
+
+"schemes":["http","https"],
+  "tags":[
+      {
+          "name":"OnlineShop",
+          "description":"Online Operating Store"
+      }
+  ],
+  "paths":{  
+"/add":{
+"post":
+{
+  "tags":["OnlineShop"],
+  "summary":"Add a new product",
+  "description":"add a new product with  the provided details",
+  "parameters":[
+      {
+          "name":"body",
+          "in":"body",
+          "required":true,
+          "schema":{
+            "$ref":"#/components/schemas/OnlineShop"
+      }
+      }
+  ],
+  "requestBody":{
+      "content":{
+          "application/json":
+          {
+              "schema":{
+                  "$ref": "#/components/schemas/OnlineShop"
+              }
+          }
+      }
+  },
+  "responses":{
+      "201":
+      {
+          "description":"Product addedsuccessfully",
+          "content":{
+              "application/json":
+              {
+                  "schema":{
+                      "$ref":"#/components/schemas/OnlineShop"
+                  }
+              }
+          }
+      },
+      "400":
+      {
+          "description":"bad request -Validation error",
+          "content":{
+              "application/json":{
+                  "schema":{
+                      "type": "object",
+                      "properties":{
+                          "message":{
+                              "type":"string"
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+},
+"/list":
+{
+  "get":
+  {
+      "tags":["OnlineShop"],
+      "summary":"Get all products available",
+      "description":"Returns all the books",
+      "responses":{
+          "200":
+          {
+              "description":"All the the Products",
+              "content":{
+                  "application/json":
+                  {
+                      "schema":{
+                          "type":"array",
+                          "items":{
+                              "$ref":"#/components/schemas/OnlineShop"
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+},
+"/update/:id":
+{
+  "put":
+  {
+      "tags":["OnlineShop"],
+      "summary":"Update a product",
+      "description":"Updates a product with the provided details",
+      "parameters":[
+          {
+              "name":"in",
+              "in":"path",
+              "required":true,
+              "schema":{
+                  "type":"string"
+              }
+          }
+      ],
+      "requestBody":{
+          "content":{
+              "application/json":
+              {
+                  "schema":{
+                      "$ref": "#/components/schemas/OnlineShop"
+                  }
+              }
+          }
+      }
+  }
+},
+
+"/getproduct/:id":{
+  "get":
+  {
+      "tags":["OnlineShop"],
+      "summary":"Get a product by id",
+      "description":"Returns a product with the provided id",
+      "parameters":[
+          {
+              "name":"id",
+              "in":"path",
+              "required":true,
+              "schema":{
+                  "type":"string"
+              }
+          }
+      ],
+      "responses":{
+          "200":
+          {
+              "description":"product found",
+              "content":{
+                  "application/json":
+                  {
+                      "schema":{
+                          "$ref":"#/components/schemas/OnlineShop"
+                      }
+                  }
+              }
+          },
+          "404":
+          {
+              "description":"product not found",
+              "content":{
+                  "application/json":{
+                      "schema":{
+                          "type": "object",
+                          "properties":{
+                              "message":{
+                                  "type":"string"
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+},
+
+"/product/:email":{
+  "get":
+  {
+      "tags":["OnlineShop"],
+      "summary":"Get a product by email",
+      "description":"Returns a product with the provided id",
+      "parameters":[
+          {
+              "name":"category",
+              "in":"path",
+              "required":true,
+              "schema":{
+                  "type":"string"
+              }
+          }
+      ],
+      "responses":{
+          "200":
+          {
+              "description":"book found",
+              "content":{
+                  "application/json":
+                  {
+                      "schema":{
+                          "$ref":"#/components/schemas/OnlineShop"
+                      }
+                  }
+              }
+          },
+          "404":
+          {
+              "description":"product not found",
+              "content":{
+                  "application/json":{
+                      "schema":{
+                          "type": "object",
+                          "properties":{
+                              "message":{
+                                  "type":"string"
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+},
+
+"/delete/:id":{
+  "delete":
+  {
+      "tags":["OnlineShop"],
+      "summary":"Delete a product",
+      "description":"Deletes a product with the provided id",
+      "parameters":[
+          {
+              "name":"id",
+              "in":"path",
+              "required":true,
+              "schema":{
+                  "type":"string"
+              }
+          }
+      ],
+      "responses":{
+          "200":
+          {
+              "description":"product deleted",
+              "content":{
+                  "application/json":
+                  {
+                      "schema":{
+                          "$ref":"#/components/schemas/OnlineShop"
+                      }
+                  }
+              }
+          },
+          "404":
+          {
+              "description":"product not found",
+              "content":{
+                  "application/json":{
+                      "schema":{
+                          "type": "object",
+                          "properties":{
+                              "message":{
+                                  "type":"string"
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+  },
+  "components": {
+    "schemas": {
+      "OnlineShop": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique identifier for the product."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the product."
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "description": "The price of the product."
+          },
+          "description": {
+            "type": "string",
+            "description": "A detailed description of the product."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URL to the product's image."
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The ID of the category the product belongs to."
+          }
+        },
+        "required": ["name", "price"],
+        "example": {
+          "id": "123e4567-e89b-12d3-a456-426614174000",
+          "name": "Example Product",
+          "price": 9.99,
+          "description": "This is an example product.",
+          "image": "https://example.com/images/product.jpg",
+          "categoryId": "123e4567-e89b-12d3-a456-426614174001"
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "The unique identifier for the category."
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+    }
+  }
