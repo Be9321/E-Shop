@@ -8,7 +8,7 @@ export const createPaymentIntent = async (req, res) => {
  try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
-      currency: 'usd'
+      currency: 'rwf'
     });
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
  } catch (error) {

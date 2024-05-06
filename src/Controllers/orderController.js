@@ -1,14 +1,17 @@
 import Order from '../models/orderModel.js';
+import { sendEmail } from '../utils/sendEmail.js';
 
 // Create a new order
 export const createOrder = async (req, res) => {
  const { items } = req.body;
- const userId = req.user._id; // Assuming user is authenticated and user._id is available
+ //const userId = req.user._id; // Assuming user is authenticated and user._id is available
 
  try {
-    const order = new Order({ user: userId, items });
+    const order = new Order( req.body );
     await order.save();
     res.status(201).json(order);
+    await sendEmail(req.body.items, "is pending", `Your OTP is ${sendEmail}`);
+
  } catch (error) {
     res.status(500).send(error);
  }

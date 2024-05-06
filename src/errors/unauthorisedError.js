@@ -21,3 +21,4 @@ export class UnauthorizedError extends CustomError {
         this.statusCode = 401;
     }
 }
+export default UnauthorizedError;

@@ -219,7 +219,7 @@
       "responses":{
           "200":
           {
-              "description":"book found",
+              "description":"product not found",
               "content":{
                   "application/json":
                   {
@@ -358,4 +358,4 @@
       }
     }
     }
-  }
+}

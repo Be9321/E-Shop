@@ -1,4 +1,4 @@
-import productModel from '../models/productModel.js';
+import Product from '../models/productModel.js';
 import upload from '../middlewares/uploadImage.js';
 
 // Get all products
@@ -13,10 +13,10 @@ export const getProducts = async (req, res) => {
 
 // Create a new product
 export const createProduct = async (req, res) => {
- const { name, price, description, image } = req.body;
+//  const { name, price, description, image } = req.body;
 
  try {
-    const product = new product({ name, price, description, image });
+    const product = new Product(req.body);
     await product.save();
     res.status(201).json(product);
  } catch (error) {

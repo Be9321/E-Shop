@@ -107,9 +107,9 @@ const swaggerdocumentation=
                 
             },
 
-            "authorName":
+            "price":
             {
-                "type":"string",
+                "type":"number",
                 "required":true
                 
             },
@@ -121,11 +121,11 @@ const swaggerdocumentation=
             {
                 "type":"string",
                 "required":true,
-                "enum":["Novels","History", "Science", "Poetry", "Recipe", "Comic"]
+                "enum":["beauty products","technology products", "home appliance product", "kids product", "cars products", "health products"]
             },
-            default: "Novels",
+            default: "technology products",
 
-            "checkBook":{
+            "checkProduct":{
                 "completed":{
                     "type":"Boolean",
                    "require":false

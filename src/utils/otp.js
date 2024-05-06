@@ -1,18 +1,7 @@
-const crypto = require('crypto');
-const emailService = require('./emailService');
+export const otpGenerator = () => {
+    var otp = 0;
 
-const generateOTP = () => {
- return crypto.randomBytes(3).toString('hex');
+    otp = Math.ceil(Math.random()*1000000);
+
+    return otp;
 };
-
-const sendOTP = async (email, otp) => {
- const subject = 'Your OTP for E-Shop-1';
- const text = `Your OTP is: ${otp}`;
- await emailService.sendEmail(email, subject, text);
-};
-
-const verifyOTP = (userInput, otp) => {
- return userInput === otp;
-};
-
-module.exports = { generateOTP, sendOTP, verifyOTP };

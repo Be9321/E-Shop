@@ -4,12 +4,12 @@ import {
  updateOrder,
  fetchOrderById,
  fetchAllOrders,
-} from '../Controllers/orderController.js'; // Adjust the import path according to your project structure
+} from '../Controllers/orderController.js'; 
 
 const orderRouter = express.Router();
 
 // Order routes
-orderRouter.post('/orders', createOrder);
+orderRouter.post('/add', createOrder);
 orderRouter.put('/orders/:orderId', updateOrder);
 orderRouter.get('/orders/:orderId', fetchOrderById);
 orderRouter.get('/orders', fetchAllOrders);

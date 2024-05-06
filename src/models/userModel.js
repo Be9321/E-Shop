@@ -4,9 +4,11 @@ import jwt from 'jsonwebtoken';
 
 
 const userSchema = new mongoose.Schema({
- email: { type: String, required: true, unique: true },
- password: { type: String, required: true },
- // Add other fields as needed
+name: {type: String,required: true},
+email: { type: String, required: true, unique: true },
+password: { type: String, required: true },
+address: { type: String, required: true }, // User's address
+phoneNumber: { type: String, required: true }, // User's phone number
 });
 
 userSchema.methods.generateAuthToken = function () {

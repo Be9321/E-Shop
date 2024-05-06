@@ -7,7 +7,7 @@ export const sendOrderUpdateNotification = async (req, res) => {
  const text = `Your order with ID ${orderId} has been updated. Please check your order status.`;
 
  try {
-    await sendEmail(email, subject, text);
+    await sendOrderUpdateNotification(email, subject, text);
     res.status(200).send('Notification sent');
  } catch (error) {
     res.status(500).send('Failed to send notification');
@@ -21,7 +21,7 @@ export const sendOrderConfirmationNotification = async (req, res) => {
  const text = `Your order with ID ${orderId} has been successfully placed. Thank you for your purchase!`;
 
  try {
-    await sendEmail(email, subject, text);
+    await sendOrderConfirmationNotification(email, subject, text);
     res.status(200).send('Order confirmation sent');
  } catch (error) {
     res.status(500).send('Failed to send order confirmation');
@@ -35,7 +35,7 @@ export const sendShippingUpdateNotification = async (req, res) => {
  const text = `Your order with ID ${orderId} has been updated to: ${shippingStatus}.`;
 
  try {
-    await sendEmail(email, subject, text);
+    await sendShippingUpdateNotification(email, subject, text);
     res.status(200).send('Shipping update sent');
  } catch (error) {
     res.status(500).send('Failed to send shipping update');
@@ -49,7 +49,7 @@ export const sendPasswordResetConfirmationNotification = async (req, res) => {
  const text = `We received your request to reset your password. Please check your email for further instructions.`;
 
  try {
-    await sendEmail(email, subject, text);
+    await sendPasswordResetConfirmationNotification(email, subject, text);
     res.status(200).send('Password reset confirmation sent');
  } catch (error) {
     res.status(500).send('Failed to send password reset confirmation');
